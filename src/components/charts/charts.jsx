@@ -28,8 +28,6 @@ import {
 function Charts (props) {
   const {currentCity, weather} = props;
 
-  console.log(weather);
-
   require('dayjs/locale/ru');
   dayjs.locale('ru');
   const dates = weather.map((item) => dayjs.unix(item.dt).format('dddd, MMMM D, YYYY h:mm'));
@@ -37,7 +35,6 @@ function Charts (props) {
   const temps = weather.map((item) => item.main.temp);
   const humidity = weather.map((item) => item.main.humidity);
   const pressure = weather.map((item) => Math.round(item.main.pressure * PRESSURE_RATIO * 100));
-  console.log(pressure);
 
   ChartJS.register(
     CategoryScale,
