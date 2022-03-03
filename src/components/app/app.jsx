@@ -1,14 +1,17 @@
 import React from 'react';
 import Weather from '../weather/weather';
-import {cities} from '../../mock/cities';
+import Header from '../header/header';
+import Footer from '../footer/footer';
+import {cities, navItems} from '../../mock/mock';
 
 function App () {
   return (
     <>
-      <h1>
-        Погода в твоем городе
-      </h1>
-      <Weather cities={cities}/>
+      <Header navItems={navItems}/>
+      <main>
+        <Weather cities={cities}/>
+      </main>
+      <Footer />
     </>
   );
 }

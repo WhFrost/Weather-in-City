@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {nanoid} from 'nanoid';
+import globalStyles from '../app/app.module.scss';
+import styles from './weather.module.scss';
 import CityProp from '../prop-validation/city.prop';
 import {ActionCreator} from '../../store/action';
 import {fetchWeather} from '../../store/api-actions';
@@ -28,28 +30,36 @@ function Weather (props) {
   };
 
   return (
-    <section>
-      <label htmlFor="available-city">
-        Выберите город
-      </label>
-      <select
-        name="cities"
-        id="available-city"
-        value={!currentCity ? 'default' : currentCity.name}
-        onChange={onCityChange}
-      >
-        <option value={'default'} disabled>Город</option>
+    <section className={styles['weather']}>
+      <div className={`${globalStyles['container']} ${styles['weather__wrapper']}`}>
+        <h1 className={`${globalStyles['title']} ${styles['weather__title']}`}>
+          Погода в твоем городе
+        </h1>
+        <div className={styles['weather__field-wrapper']}>
+          <label htmlFor="available-city" className={styles['weather__field-label']}>
+            Выберите город
+          </label>
+          <select
+            name="cities"
+            id="available-city"
+            className={styles['weather__field']}
+            value={!currentCity ? 'default' : currentCity.name}
+            onChange={onCityChange}
+          >
+            <option value={'default'} disabled>Город</option>
+            {
+              cities.map(({name, altName}) => (
+                <option value={name} key={nanoid()}>
+                  {altName}
+                </option>
+              ))
+            }
+          </select>
+        </div>
         {
-          cities.map(({name, altName}) => (
-            <option value={name} key={nanoid()}>
-              {altName}
-            </option>
-          ))
+          isCitySelected && isWeatherLoaded ? <Charts />  : null
         }
-      </select>
-      {
-        isCitySelected && isWeatherLoaded ? <Charts />  : null
-      }
+      </div>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import {ActionType} from '../action';
-import {cities} from '../../mock/cities';
+import {cities} from '../../mock/mock';
 
 const initialState = {
   currentCity: null,

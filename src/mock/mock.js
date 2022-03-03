@@ -13,6 +13,22 @@ const cities = [
   },
 ];
 
+const navItems = [
+  {
+    title: 'Menu 1',
+    link: '#'
+  },
+  {
+    title: 'Menu 2',
+    link: '#'
+  },
+  {
+    title: 'Menu 3',
+    link: '#'
+  }
+];
+
 export {
-  cities
+  cities,
+  navItems
 };

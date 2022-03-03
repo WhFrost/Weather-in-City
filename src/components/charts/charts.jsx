@@ -20,6 +20,7 @@ import {
 import CityProp from '../prop-validation/city.prop';
 import WeatherProp from '../prop-validation/weather.prop';
 import {
+  TIME_OF_MEASUREMENT,
   PRESSURE_RATIO,
   MIN_PRESSURE,
   MAX_PRESSURE,
@@ -30,7 +31,8 @@ function Charts (props) {
 
   require('dayjs/locale/ru');
   dayjs.locale('ru');
-  const dates = weather.map((item) => dayjs.unix(item.dt).format('dddd, MMMM D, YYYY h:mm'));
+  const sortingDates = weather.filter((item) => item.dt_txt.includes(TIME_OF_MEASUREMENT));
+  const dates = sortingDates.map((item) => dayjs(item.dt_txt).format('dddd, HH:mm'));
 
   const temps = weather.map((item) => item.main.temp);
   const humidity = weather.map((item) => item.main.humidity);
@@ -128,7 +130,9 @@ function Charts (props) {
   };
 
   return (
-    <Line options={options} data={data} />
+    <section>
+      <Line options={options} data={data} />
+    </section>
   );
 }
 
