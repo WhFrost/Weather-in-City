@@ -59,13 +59,29 @@ function Charts (props) {
       title: {
         display: true,
         text: `График погоды в городе ${currentCity.altName}`,
+        font: {
+          family: 'Roboto',
+          size: 21,
+        },
       },
+      legend: {
+        labels: {
+          font: {
+            family: 'Roboto',
+            size: 16,
+          }
+        },
+      }
     },
     scales: {
       y: {
         title: {
           display: true,
-          text: 'Температура'
+          text: 'Температура',
+          font: {
+            family: 'Roboto',
+            size: 16,
+          }
         },
         type: 'linear',
         display: true,
@@ -74,7 +90,11 @@ function Charts (props) {
       y1: {
         title: {
           display: true,
-          text: 'Влажность'
+          text: 'Влажность',
+          font: {
+            family: 'Roboto',
+            size: 16,
+          }
         },
         type: 'linear',
         display: true,
@@ -86,7 +106,11 @@ function Charts (props) {
       y2: {
         title: {
           display: true,
-          text: 'Давление'
+          text: 'Давление',
+          font: {
+            family: 'Roboto',
+            size: 16,
+          }
         },
         type: 'linear',
         display: true,
